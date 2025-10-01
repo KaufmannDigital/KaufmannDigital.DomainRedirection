@@ -1,0 +1,7 @@
+Neos:
+  Flow:
+    http:
+      middlewares:
+        'domainRedirect':
+          position: 'after redirect'
+          middleware: 'KaufmannDigital\DomainRedirection\Http\DomainRedirectMiddleware'

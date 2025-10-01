@@ -1,0 +1,11 @@
+KaufmannDigital:
+  DomainRedirection:
+    redirects:
+      # Example configuration:
+      # - domainPattern: 'old-domain.com'  # Can be plain string or regex pattern
+      #   target: 'https://new-domain.com'
+      #   statusCode: 301
+      #   rules:
+      #     - pattern: '^/old-path/(.*)$'
+      #       replacement: '/new-path/$1'
+      #       statusCode: 302

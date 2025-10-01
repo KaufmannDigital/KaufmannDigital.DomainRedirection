@@ -1,0 +1,18 @@
+{
+    "description": "Package to redirect A whole Domain and based on Regex-rules.",
+    "type": "neos-package",
+    "require": {
+        "neos/neos": "^8.3"
+    },
+    "name": "kaufmanndigital/domainredirection",
+    "autoload": {
+        "psr-4": {
+            "KaufmannDigital\\DomainRedirection\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "KaufmannDigital.DomainRedirection"
+        }
+    }
+}
