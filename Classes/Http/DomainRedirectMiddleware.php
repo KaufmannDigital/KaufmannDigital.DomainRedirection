@@ -52,9 +52,15 @@ class DomainRedirectMiddleware implements MiddlewareInterface
                                 if (preg_match('#^https?://#', $replacement)) {
                                     $targetUrl = preg_replace('#' . $rule['pattern'] . '#', $replacement, $path);
                                 } else {
-                                    // If replacement is a path, build full URL from target domain
+                                    // If replacement is a path, build full URL from target domain (without path)
                                     $targetPath = preg_replace('#' . $rule['pattern'] . '#', $replacement, $path);
-                                    $targetUrl = isset($redirect['target']) ? rtrim($redirect['target'], '/') . $targetPath : $targetPath;
+                                    if (isset($redirect['target'])) {
+                                        $parsedTarget = parse_url($redirect['target']);
+                                        $targetBase = ($parsedTarget['scheme'] ?? 'https') . '://' . ($parsedTarget['host'] ?? '');
+                                        $targetUrl = rtrim($targetBase, '/') . $targetPath;
+                                    } else {
+                                        $targetUrl = $targetPath;
+                                    }
                                 }
 
                                 return $this->createRedirectResponse($targetUrl, $statusCode);
